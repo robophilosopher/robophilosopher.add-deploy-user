@@ -1,0 +1,16 @@
+---
+  - name: Set root password
+    user: name=root
+          password={{ crypted_root_password }}
+    become: yes
+    become_method: sudo
+
+  - name: Add Deploy User
+    user: name=deploy state=present password={{ crypted_deploy_password }}
+    become: yes
+    become_method: sudo
+
+  - name: Add SSH directory
+    file: path=/home/deploy/.ssh state=directory mode=700
+    become: yes
+    become_method: sudo
