@@ -1,7 +1,7 @@
-Role Name
+robophilosopher.add-user
 =========
 
-A brief description of the role goes here.
+This role captures the user setup found in [My First 10 Minutes On a Server - Primer for Securing Ubuntu](http://www.codelitt.com/blog/my-first-10-minutes-on-a-server-primer-for-securing-ubuntu/)
 
 Requirements
 ------------
@@ -10,22 +10,7 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 
 Role Variables
 --------------
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+It's expected that you'll supply strong SHA512-crypted passwords to `crypted_deploy_password` and `crypted_root_password`. It's not a bad idea to use a password generator to create something strong. Then, you can use something like Python's crypt module to encrypt it.
 
 License
 -------
