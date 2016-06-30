@@ -5,12 +5,58 @@
     become: yes
     become_method: sudo
 
+  - name: Create Primary group
+    group: name=primary-group
+    become: yes
+    become_method: sudo
+
   - name: Add Deploy User
-    user: name=deploy state=present password={{ crypted_deploy_password }}
+    user: name=deploy state=present group=primary-group groups="sudo" password={{ crypted_deploy_password }}
     become: yes
     become_method: sudo
 
   - name: Add SSH directory
     file: path=/home/deploy/.ssh state=directory mode=700
+    become: yes
+    become_method: sudo
+
+  - name: Add SSH key
+    authorized_key: user=deploy key="{{ lookup('file', '~/.ssh/id_rsa.pub')}}"
+    become: yes
+    become_method: sudo
+
+  - name: Disable password login
+    lineinfile: dest=/etc/ssh/sshd_config
+                regexp="{{ item }}"
+                state=absent
+    notify: Restart SSH
+    with_items:
+      - "^#PasswordAuthentication"
+      - "^PasswordAuthentication (?!no)"
+    become: yes
+    become_method: sudo
+
+  - name: Allow deploy user login
+    lineinfile: dest=/etc/ssh/sshd_config
+                line="AllowUsers deploy"
+                state=present
+                insertafter="^# Permit deploy to login"
+    become: yes
+    become_method: sudo
+
+  - name: Disable root login
+    lineinfile: dest=/etc/ssh/sshd_config
+                line="PermitRootLogin no"
+                state=present
+                insertafter="^# Do not permit anyone to login as root"
+    become: yes
+    become_method: sudo
+
+  - name: Set PasswordAuthentication
+    lineinfile: dest=/etc/ssh/sshd_config
+                line="PasswordAuthentication no"
+                state=present
+                insertafter="^# Change to no to disable tunnelled clear text passwords"
+    notify: Restart SSH
     become: yes
     become_method: sudo

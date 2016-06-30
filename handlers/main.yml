@@ -1,2 +1,6 @@
 ---
-# handlers file for robophilosopher.add-user
+
+- name: Restart SSH
+  command: service ssh restart
+  become: yes
+  become_method: sudo

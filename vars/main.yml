@@ -1,4 +1,4 @@
 ---
-# Be sure to select distinct, strong passwords for each of these variables
-crypted_root_password: $6$JjInMpq9XbrAQKUO$vBvaXCTGSFDrtgp1hKScEy9MkT9UzCE/3XIERyBE1q5/SOcClcwwvfVsq/d.TSxwsXroJGe6aLrHfrScuw1OX0
-crypted_deploy_password: $6$JjInMpq9XbrAQKUO$vBvaXCTGSFDrtgp1hKScEy9MkT9UzCE/3XIERyBE1q5/SOcClcwwvfVsq/d.TSxwsXroJGe6aLrHfrScuw1OX0
+# Be sure to select distinct, strong passwords for each of these variables. The following simply crypts 'password'.
+crypted_root_password: $6$Cape4BfAgMoQ3t7Y$Y1P9o1xmOKrN/y/7KBysSTiBKdwngsMz1FLN9rzWdtxhzyqJxBJ0ae7nkAfi2OO4ZsCIQLEth6Jiw/FW2dAie1
+crypted_deploy_password: $6$Cape4BfAgMoQ3t7Y$Y1P9o1xmOKrN/y/7KBysSTiBKdwngsMz1FLN9rzWdtxhzyqJxBJ0ae7nkAfi2OO4ZsCIQLEth6Jiw/FW2dAie1
