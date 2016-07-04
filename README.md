@@ -1,4 +1,4 @@
-robophilosopher.add-user
+robophilosopher.add-deploy-user
 =========
 
 This role captures the user setup found in [My First 10 Minutes On a Server - Primer for Securing Ubuntu](http://www.codelitt.com/blog/my-first-10-minutes-on-a-server-primer-for-securing-ubuntu/)
@@ -21,4 +21,4 @@ Author Information
 ------------------
 
 An optional section for the role authors to include contact information, or a website (HTML is not allowed).
-# robophilosopher.add-user
+# robophilosopher.add-deploy-user
